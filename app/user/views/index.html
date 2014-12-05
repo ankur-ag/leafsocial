@@ -1,0 +1,32 @@
+<div ng-controller="IndexController">
+
+    <super-navbar>
+        <super-navbar-title>
+            Index
+        </super-navbar-title>
+    </super-navbar>
+
+    <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
+    <div ng-hide="showSpinner" class="card">
+        <div class="item">
+            <label class="item item-input item-floating-label">
+                <input type="text" ng-model="user.first" placeholder="First Name" />
+            </label>
+            <label class="item item-input item-floating-label">
+                <input type="text" ng-model="user.last" placeholder="Last Name" />
+            </label>
+            <label class="item item-input item-floating-label">
+                <input type="email" ng-model="user.email" placeholder="Email" />
+            </label>
+        </div>
+
+        <div class="item item-image item-image-bg" ng-click="pickPhoto()">
+            <img src="{{photoUrl}}">
+        </div>
+    </div>
+
+    <div class="padding">
+      <button class="button button-block button-positive" ng-click="update()">Update</button>
+    </div>
+
+</div>
