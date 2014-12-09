@@ -1,4 +1,4 @@
-<div class="padding">
+<div class="padding" ng-controller="FeedController">
 
     <super-navbar>
         <super-navbar-title>
@@ -6,22 +6,29 @@
         </super-navbar-title>
     </super-navbar>
 
-    <div class="list card">
-        <div class="item item-avatar">
-            <img src="mcfly.jpg">
-            <h2>Marty McFly</h2>
-            <p>November 05, 1955</p>
-        </div>
 
-        <div class="item item-body">
-            <img class="full-image" src="delorean.jpg">
-            <p>
-                This is a "Facebook" styled Card. The header is created from a Thumbnail List item, and the content is from a card-body consisting of an image and paragraph text.
-            </p>
-            <p>
-                <a href="#" class="subdued">1 Like</a>
-                <a href="#" class="subdued">5 Comments</a>
-            </p>
+    <div ng-repeat="p in posts | orderBy:'date_created':true">
+        <div class="list card" ng-init="p.likes = p.likes || []">
+            <div class="item item-avatar">
+                <img src="{{p.user.avatar}}">
+                <h2>{{p.user.first_name}} {{p.user.last_name}}</h2>
+                <p>{{p.date_created | date:'medium'}}</p>
+                <p ng-if="p.user.id == user.id" ng-click="delete(p)">Delete</p>
+            </div>
+            <div class="item item-body">
+                <div ng-show="p.photo"><img class="full-image" src="delorean.jpg">
+                </div>
+                <p>
+                    {{p.content}}
+                </p>
+                <p>
+                    {{p.likes_count || 0}} <i class="icon super-heart"></i>
+                    <span ng-show="(p.likes | filter:{id: user.id}).length == 0">
+                        <a href="#" class="subdued" ng-click="like(p)"> Like</a>
+                    </span>
+                    <!--<a href="#" class="subdued">5 Comments</a>-->
+                </p>
+            </div>
         </div>
     </div>
 </div>

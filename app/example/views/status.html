@@ -3,20 +3,20 @@
         <super-navbar-title>
             Status Update
         </super-navbar-title>
+        <super-navbar-button ng-click="save()" side="right">
+            OK
+        </super-navbar-button>
     </super-navbar>
 
     <div class="card">
         <div class="item">
             <label class="item item-input item-floating-label">
-                <textarea placeholder="Status"></textarea>
+                <textarea placeholder="Status" ng-model="post.content"></textarea>
             </label>
         </div>
 
         <div class="item item-image item-image-bg" ng-click="pickPhoto()">
             <img src="{{photoUrl}}">
         </div>
-    </div>
-    <div class="padding">
-      <button class="button button-block button-positive" ng-click="post()">Post</button>
     </div>
 </div>

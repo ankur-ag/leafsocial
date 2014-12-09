@@ -18,6 +18,8 @@ traits:
 schemas:
   - Users: '{"$schema":"http://json-schema.org/schema","title":"User collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical User representation","properties":{"first_name":{"type":"string"},"last_name":{"type":"string"},"email":{"type":"string"},"avatar":{"type":"string"}},"required":[]}}}}'
   - User: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical User representation","properties":{"object":{"type":"object","properties":{"first_name":{"type":"string"},"last_name":{"type":"string"},"email":{"type":"string"},"avatar":{"type":"string"}},"required":[]}}}'
+  - Posts: '{"$schema":"http://json-schema.org/schema","title":"Post collection","type":"object","properties":{"objects":{"type":"array","items":{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Post representation","properties":{"content":{"type":"string"},"date_created":{"type":"string"},"date_modified":{"type":"string"},"id":{"type":"string"},"user":{"type":"string"},"likes":{"type":"string"},"likes_count":{"type":"integer"}},"required":[]}}}}'
+  - Post: '{"$schema":"http://json-schema.org/schema","type":"object","description":"The canonical Post representation","properties":{"object":{"type":"object","properties":{"content":{"type":"string"},"date_created":{"type":"string"},"date_modified":{"type":"string"},"id":{"type":"string"},"user":{"type":"string"},"likes":{"type":"string"},"likes_count":{"type":"integer"}},"required":[]}}}'
 
 resourceTypes:
   - dolan_db_collection:
@@ -105,6 +107,16 @@ resourceTypes:
   description: |
     {
       "resourceName": "User",
+      "identifierKey": "id"
+    }
+  type: dolan_db_collection
+  /{id}:
+    type: dolan_db_member
+
+/Post:
+  description: |
+    {
+      "resourceName": "Post",
       "identifierKey": "id"
     }
   type: dolan_db_collection

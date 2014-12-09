@@ -4,16 +4,19 @@
         <super-navbar-title>
             Index
         </super-navbar-title>
+        <super-navbar-button ng-click="save()" side="right">
+            ok
+        </super-navbar-button>
     </super-navbar>
 
     <div ng-show="showSpinner" ng-include="'_spinner.html'"></div>
     <div ng-hide="showSpinner" class="card">
         <div class="item">
             <label class="item item-input item-floating-label">
-                <input type="text" ng-model="user.first" placeholder="First Name" />
+                <input type="text" ng-model="user.first_name" placeholder="First Name" />
             </label>
             <label class="item item-input item-floating-label">
-                <input type="text" ng-model="user.last" placeholder="Last Name" />
+                <input type="text" ng-model="user.last_name" placeholder="Last Name" />
             </label>
             <label class="item item-input item-floating-label">
                 <input type="email" ng-model="user.email" placeholder="Email" />
@@ -21,12 +24,8 @@
         </div>
 
         <div class="item item-image item-image-bg" ng-click="pickPhoto()">
-            <img src="{{photoUrl}}">
+            <img src="{{user.avatar}}">
         </div>
-    </div>
-
-    <div class="padding">
-      <button class="button button-block button-positive" ng-click="update()">Update</button>
     </div>
 
 </div>
